@@ -1,0 +1,36 @@
+{
+  "name": "test2",
+  "version": "1.0.0",
+  "description": "TextAlive API Template",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html --out-dir dev",
+    "build": "parcel build src/index.html --public-url ./ --out-dir docs --no-source-maps",
+    "clean": "del-cli .cache dev docs"
+  },
+  "keywords": [
+    "textalive"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happydemon-github/TEMPLATE.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/happydemon-github/TEMPLATE/issues"
+  },
+  "homepage": "https://github.com/happydemon-github/TEMPLATE#readme",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "randomcolor": "^0.6.2",
+    "textalive-app-api": "^0.2.1",
+    "typewriter-effect": "^2.13.1"
+  },
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "parcel-bundler": "^1.11.0",
+    "parcel-plugin-clean-dist": "0.0.6",
+    "sass": "^1.27.0"
+  }
+}

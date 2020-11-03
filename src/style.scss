@@ -1,0 +1,260 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #0008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#overlay .play {
+  padding: 1em;
+  color: #000;
+  background-color: #777;
+  border-color: #777;
+  font-weight: bold;
+}
+
+#container {
+  width: 100%;
+  //  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+
+#container > div {
+  width: 100%;
+}
+
+#container p {
+  padding: 0 0.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#lyrics {
+  color: #ffffff;
+  background-color: black;
+  opacity: 0.8;
+}
+
+#media {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+#header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+#footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+#footer > p {
+  margin-left: 10px;
+}
+
+#control {
+  margin: 10px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+#control > button {
+  margin-right: 5px;
+}
+#control > button:last-child {
+  margin-right: 0;
+}
+
+.TSAS {
+  position: absolute;
+  color: #fff;
+  font-size: 8px;
+  font-family: OCR A Std;
+}
+
+#loadMes {
+  left: 39px;
+  top: 39px;
+  width: 500px;
+}
+
+#songData {
+  left: 39px;
+  top: 39px;
+  width: 500px;
+}
+
+#dataSeg {
+  left: 86px;
+  top: 87px;
+  width: 100px;
+}
+
+#dataChord {
+  left: 77px;
+  top: 99px;
+  width: 100px;
+}
+
+#dataPos {
+  left: 105px;
+  top: 112px;
+  width: 100px;
+}
+
+#endMes {
+  left: 39px;
+  top: 39px;
+  width: 500px;
+}
+
+// グリッドキャンバス
+body {
+  &::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(transparentize(#ffffff, 1) 50%, transparentize(darken(#ffffff, 10), 0.75) 50%),
+      // RGBエフェクト (縦2px、横3pxのRGB縦グラデドットを敷き詰めている)
+        linear-gradient(
+          90deg,
+          transparentize(#ff0000, 0.94),
+          transparentize(#00ff00, 0.98),
+          transparentize(#0000ff, 0.94)
+        );
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    content: "";
+    animation: flicker 0.15s infinite;
+  }
+}
+
+#grid {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    content: "";
+    animation: 3000ms linear 1300ms forwards infinite scan;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    content: "";
+    animation: 4000ms linear 0ms forwards infinite scan;
+  }
+}
+
+@keyframes scan {
+  from {
+    transform: translate3d(0, 0%, 0);
+  }
+  to {
+    transform: translate3d(0, 100vh, 0);
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+// 3Dライン
+.canvas3D {
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  border: 0;
+  max-width: 100%;
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+
+// レスポンシブグリッド
+:root {
+  body {
+    background-color: black;
+    #gridRes {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+      justify-content: center;
+      .grid-itemRes {
+        z-index: 1;
+        opacity: 0.5;
+        min-width: 100%;
+        min-height: 100%;
+        position: relative;
+        cursor: pointer;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          outline: 1px solid black;
+          display: block;
+        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
