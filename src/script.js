@@ -101,7 +101,8 @@ function onAppReady(app) {
     document.querySelector("#control").style.display = "block";
   }
   // TextAlive ホストと接続されていなければ曲選択
-  if (!app.managed) {
+  //  if (!app.managed) {
+  if (!app.songUrl) {
     // グリーンライツ・セレナーデ / Omoi feat. 初音ミク
     // - 初音ミク「マジカルミライ 2018」テーマソング
     // - 楽曲: http://www.youtube.com/watch?v=XSLhsjepelI
@@ -119,15 +120,15 @@ function onAppReady(app) {
     // - 楽曲: http://www.youtube.com/watch?v=ygY2qObZv24
     // - 歌詞: https://piapro.jp/t/PLR7
     player.createFromSongUrl("http://www.youtube.com/watch?v=ygY2qObZv24");
-  }
+}
 
-  // TSNS
-  loadMes.style.display = "block";
-  twLoadMes
-    .typeString(
-      "STARTING TEXTALIVE SONG ANALYZE SYSTEM..."
-      + "<br>LOADING SONG DATA..."
-    )
+// TSNS
+loadMes.style.display = "block";
+twLoadMes
+  .typeString(
+    "STARTING TEXTALIVE SONG ANALYZE SYSTEM..."
+    + "<br>LOADING SONG DATA..."
+  )
 }
 
 function onSongInfoLoad(songInfo) {
